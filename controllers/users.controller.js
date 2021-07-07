@@ -14,7 +14,7 @@ async function addUser(req, reply) {
   const { name, age } = req.body;
   const data = { name, age };
   const result = await users.insertOne(data);
-  reply.send(result.ops);
+  reply.code(201).send(result.ops[0]);
 }
 async function getUser(req, reply) {
   const users = this.mongo.db.collection("users");
